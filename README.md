@@ -1,11 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This project also contains express, mongoose which are responsible for smooth backend
+This project also contains express, mongoose which are responsible for smooth backend.
 ## Available Scripts
 
 ## Commands to run
 To run frontEnd 
-    -> yarn install
-    -> yarn start
+    -> yarn install.
+    -> yarn start.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 To run backEnd
