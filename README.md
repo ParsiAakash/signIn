@@ -16,7 +16,7 @@ To run the backend
 ### node server.js
 
 Runs the app in the development mode.<br />
-Open [http://localhost:4000](http://localhost:4000) to hit the API service.
+[http://localhost:4000](http://localhost:4000) is the one on which backend runs.
 
 ### Code Splitting
 Models are the ones which consists of the models of the collections in mongodb
