@@ -15,6 +15,7 @@ class Login extends React.Component {
       password: '',
       error: false,
       createUser: false,
+      errorMessage:'',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,14 +36,16 @@ class Login extends React.Component {
 
   signUp = () =>{
     const { name, password, email } = this.state;
-    const formData = { name, password, email}
+    console.log("this.state",this.state);
+    const formData = { name , password, email}
+    this.setState({ error: false , errorMessage:''})
   axios
   .post('http://localhost:4000/user/signUp', formData)
   .then(response => {
     if (response.data.success === true) {
        this.setState({ createUser: false  });
     } else {
-      this.setState({ error: true  });
+      this.setState({ error: true , errorMessage: response.data.error });
     }
   })
   //  this.setState({ createUser: false  });
@@ -51,14 +54,14 @@ class Login extends React.Component {
   signIn= ()=>{
     const { email, password } = this.state;
     const formData = {email, password }
+    this.setState({ error: false , errorMessage:''})
   axios
   .post('http://localhost:4000/user/signIn', formData)
   .then(response => {
     if (!response.data.success) {
-      this.setState({ error: true  });
+      this.setState({ error: true ,errorMessage:response.data.error});
       localStorage.setItem('loggedIn', false);
     } else {
-      this.setState({ error: false  });
       localStorage.setItem('loggedIn', true);
       window.location.href = '/';
     }
@@ -70,7 +73,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { error ,createUser} = this.state;
+    const { error ,createUser ,errorMessage} = this.state;
     console.log("createUser",createUser);
     if(createUser) {
     return (
@@ -86,13 +89,13 @@ class Login extends React.Component {
             <Header as="h1">Sign Up</Header>
             {error && <Message
               error={error}
-              content="Please Submit Again"
+              content={errorMessage}
             />}
             <div className="inputBox">
             <Form.Input
               inline
               label="Name"
-              name="Name"
+              name="name"
               onChange={this.handleChange}
             />
             </div>
@@ -134,7 +137,7 @@ class Login extends React.Component {
             <Header as="h1">Login</Header>
             {error && <Message
               error={error}
-              content="That email/password is incorrect. Try again!"
+              content={errorMessage}
             />}
             <div className="inputBox">
             <Form.Input

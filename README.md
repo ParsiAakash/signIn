@@ -2,20 +2,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project also contains express, mongoose which are responsible for smooth backend
 ## Available Scripts
 
-In the project directory, you can run:
-
-### npm install
-### npm start
-
-Runs the app in the development mode.<br />
+## Commands to run
+To run frontEnd 
+    -> yarn install
+    -> yarn start
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-To run the backend
-### cd backend
-### npm install
-### node server.js
-
-Runs the app in the development mode.<br />
+To run backEnd
+    open another terminal
+    -> cd backend
+    -> yarn install
+    -> node server.js
 [http://localhost:4000](http://localhost:4000) is the one on which backend runs.
 
 ### Code Splitting

@@ -4,7 +4,7 @@ import { Sidebar, Menu, Icon } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import isLoggedIn from '.././helpers/is_logged_in';
-import styles from './styles.css';
+import  './styles.css';
 
 const handleLogout = () => () => {
 localStorage.removeItem('loggedIn');;
@@ -13,27 +13,25 @@ localStorage.removeItem('loggedIn');;
 };
 
 const Cms = () => {
-  if (!isLoggedIn()) {
-  return <Redirect to="/login" />;
+  if (isLoggedIn()) {
+    return (
+      <div>
+        <Helmet>
+          <title>CMS</title>
+        </Helmet>
+
+        <Sidebar as={Menu} inverted visible vertical width="thin" icon="labeled">
+           <div className="log"><button className="logOut" onClick={handleLogout()}>Logout </button> </div>
+        </Sidebar>
+        <div className="welcome">
+        <h1>  WELCOME </h1>
+        </div>
+      </div>
+    );
 }
 else {
-  return (
-    <div>
-      <Helmet>
-        <title>CMS</title>
-      </Helmet>
+  return <Redirect to="/login" />;
 
-      <Sidebar as={Menu} inverted visible vertical width="thin" icon="labeled">
-        <Menu.Item name="logout" onClick={handleLogout()}>
-          <Icon name="power" />
-          Logout
-        </Menu.Item>
-      </Sidebar>
-      <div className={styles.mainBody}>
-        WELCOME
-      </div>
-    </div>
-  );
 }
 };
 

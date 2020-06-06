@@ -1,5 +1,17 @@
 .main-body {
-  margin-left: 200px;
-  min-width: 550px;
-  max-width: 1200px;
+  height: 100%;
+  width: 100%;
+
+}
+.log {
+  text-align: right;
+  width: 100%;
+}
+.logOut {
+  cursor: pointer;
+  background-color: red;
+}
+.welcome {
+  display: flex;
+  justify-content: center;
 }
